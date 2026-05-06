@@ -11,28 +11,28 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/mattpocock/skills.git",
-        "path": "skills/engineering",
+        "path": "skills",
         "ref": "main"
       },
       "description": "Engineering skills: diagnose, grill-with-docs, triage, improve-codebase-architecture, setup-matt-pocock-skills, tdd, to-issues, to-prd, zoom-out, prototype.",
       "category": "engineering",
       "author": { "name": "Matt Pocock" },
       "strict": false,
-      "skills": ["."]
+      "skills": ["./engineering"]
     },
     {
       "name": "mattpocock-productivity",
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/mattpocock/skills.git",
-        "path": "skills/productivity",
+        "path": "skills",
         "ref": "main"
       },
       "description": "Productivity skills: caveman, grill-me, write-a-skill.",
       "category": "productivity",
       "author": { "name": "Matt Pocock" },
       "strict": false,
-      "skills": ["."]
+      "skills": ["./productivity"]
     }
   ]
 }

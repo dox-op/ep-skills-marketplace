@@ -32,35 +32,6 @@ Then install the plugin(s) you want:
 
 All skill content is fetched live from `mattpocock/skills` main branch.
 
-## Available plugins
-
-### `mattpocock-engineering`
-
-Skills are invoked as `/mattpocock-engineering:<skill-name>`.
-
-| Skill | Description |
-|-------|-------------|
-| `diagnose` | Disciplined diagnosis loop for hard bugs and performance regressions |
-| `grill-with-docs` | Grilling session that challenges your plan against the existing domain model |
-| `triage` | Triage issues through a state machine driven by triage roles |
-| `improve-codebase-architecture` | Find deepening opportunities in a codebase |
-| `setup-matt-pocock-skills` | Scaffold per-repo config before using the other engineering skills |
-| `tdd` | Test-driven development with a red-green-refactor loop |
-| `to-issues` | Break any plan or PRD into independently-grabbable issues |
-| `to-prd` | Turn the current conversation context into a PRD |
-| `zoom-out` | Get broader context or a higher-level perspective on unfamiliar code |
-| `prototype` | Build a throwaway prototype to flush out a design |
-
-### `mattpocock-productivity`
-
-Skills are invoked as `/mattpocock-productivity:<skill-name>`.
-
-| Skill | Description |
-|-------|-------------|
-| `caveman` | Ultra-compressed communication mode, cuts token usage ~75% |
-| `grill-me` | Get relentlessly interviewed about a plan or design |
-| `write-a-skill` | Create new skills with proper structure and bundled resources |
-
 ## Structure
 
 This repo contains a single file:

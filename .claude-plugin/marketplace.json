@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "enricopezzini",
+  "description": "Marketplace personale di SKILL di Enrico Pezzini, trasversale a tutti gli account Claude (personale, aziendale, cliente).",
+  "owner": {
+    "name": "Enrico Pezzini",
+    "email": "itenricopezzini@gmail.com"
+  },
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "core",
+      "source": "./plugins/core",
+      "description": "Set di SKILL personali sempre disponibili su qualsiasi account Claude.",
+      "author": {
+        "name": "Enrico Pezzini",
+        "email": "itenricopezzini@gmail.com"
+      },
+      "keywords": ["skills", "personal", "cross-account"],
+      "license": "MIT"
+    }
+  ]
+}

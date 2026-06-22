@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "core",
+  "displayName": "Enrico Pezzini — Core Skills",
+  "description": "Set di SKILL personali, trasversale a tutti gli account Claude.",
+  "author": {
+    "name": "Enrico Pezzini",
+    "email": "itenricopezzini@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "personal", "cross-account"]
+}

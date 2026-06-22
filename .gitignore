@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Claude local state (non versionare lo stato locale del plugin manager)
+.claude/settings.local.json

@@ -6,9 +6,6 @@
     "name": "Enrico Pezzini",
     "email": "itenricopezzini@gmail.com"
   },
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "plugins": [
     {
       "name": "core",

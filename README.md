@@ -1,46 +1,127 @@
-# mattpocock-skills marketplace
+# enricopezzini — Marketplace personale di SKILL
 
-A Claude Code marketplace catalog for
-[mattpocock/skills](https://github.com/mattpocock/skills).
+Marketplace Claude Code che raccoglie le mie SKILL personali e le rende
+**disponibili su qualsiasi account Claude** (personale, aziendale, condiviso da
+cliente) senza doverle copiare a mano in ogni `~/.claude`.
 
-## Why this exists
+L'idea: le skill vivono qui, in un repo git unico. Su ogni account aggiungo il
+marketplace una volta e installo il plugin. Quando aggiorno una skill, basta un
+`marketplace update` da ogni account per riallinearsi.
 
-The upstream `mattpocock/skills` repo does not ship a
-`.claude-plugin/marketplace.json`, which is the file Claude Code needs to
-discover and install skills via its built-in marketplace UI. This is tracked in
-[mattpocock/skills#21](https://github.com/mattpocock/skills/issues/21). This
-repo is a thin catalog that points at the upstream skills — no skill files are
-duplicated here.
+---
 
-Once issue #21 is resolved and the upstream repo ships its own
-`marketplace.json`, this repo will be archived.
-
-## Install
-
-In Claude Code, run:
+## Struttura
 
 ```
-/plugin marketplace add dox-op/mattpockock-skills-marketplace
+enricopezzini-marketplace/
+├── .claude-plugin/
+│   └── marketplace.json          # manifest del marketplace (nome: "enricopezzini")
+├── plugins/
+│   └── core/                     # plugin che impacchetta tutte le skill
+│       ├── .claude-plugin/
+│       │   └── plugin.json        # manifest del plugin (nome: "core")
+│       └── skills/
+│           └── skill-template/    # template da copiare per nuove skill
+│               └── SKILL.md
+└── README.md
 ```
 
-Then install the plugin(s) you want:
+- Le skill installate sono **namespaced** dal nome del plugin: si invocano come
+  `/core:nome-skill`.
+- Il plugin `core` **non fissa** un `version` nel `plugin.json`: così ogni commit
+  diventa automaticamente una nuova versione (versioning via SHA git). Comodo per
+  un set personale che evolve spesso. Se preferisci versioni esplicite, aggiungi
+  `"version": "1.0.0"` in `plugins/core/.claude-plugin/plugin.json` e **ricordati
+  di incrementarla a ogni release** (altrimenti gli account vedono "già aggiornato").
+
+---
+
+## Installazione su un nuovo account Claude
+
+Una volta pubblicato il repo su git (vedi sotto), su **ogni** account:
+
+```bash
+# 1. Aggiungi il marketplace (una volta per account)
+claude plugin marketplace add itenricopezzini/enricopezzini-marketplace
+#    oppure da URL git completo:
+#    claude plugin marketplace add https://github.com/itenricopezzini/enricopezzini-marketplace.git
+
+# 2. Installa il plugin con tutte le skill
+claude plugin install core@enricopezzini
+```
+
+Oppure dall'interno di una sessione Claude Code interattiva:
 
 ```
-/plugin install mattpocock-engineering@mattpocock-skills
-/plugin install mattpocock-productivity@mattpocock-skills
+/plugin marketplace add itenricopezzini/enricopezzini-marketplace
+/plugin install core@enricopezzini
 ```
 
-All skill content is fetched live from `mattpocock/skills` main branch.
+> Le skill **non** vengono copiate in `~/.claude`: restano gestite dal plugin
+> manager nella cache plugin. È esattamente il comportamento voluto.
 
-## Structure
+### Test in locale (senza git)
 
-This repo contains a single file:
+Per provare prima di pubblicare, puoi aggiungere il marketplace da path locale:
 
+```bash
+claude plugin marketplace add "C:/Users/Enrico.Pezzini/projectz/skills/enricopezzini-marketplace"
+claude plugin install core@enricopezzini
 ```
-.claude-plugin/marketplace.json
+
+> Nota: le `source` con path relativo (`./plugins/core`) funzionano sia da path
+> locale sia quando il marketplace è aggiunto via git. Non funzionano invece se
+> punti direttamente a un URL del solo `marketplace.json`.
+
+---
+
+## Aggiornare le skill su tutti gli account
+
+Dopo aver fatto push di nuove modifiche al repo:
+
+```bash
+claude plugin marketplace update enricopezzini   # riallinea il manifest
+claude plugin install core@enricopezzini          # reinstalla l'ultima versione
 ```
 
-Skills are consolidated into two plugins by category. Each uses `source.git-subdir`
-to fetch the category directory from `mattpocock/skills` at `ref: main`, with
-`strict: false` and `skills: ["."]` so Claude Code discovers each skill
-subdirectory automatically — without requiring an upstream `plugin.json`.
+### Script pronto (pull + update + reinstall)
+
+In alternativa c'è uno script che fa tutto in un colpo — `git pull`, riallineamento
+del manifest e reinstallazione del plugin. Usa il path del repo dove si trova, quindi
+funziona da qualsiasi account:
+
+```powershell
+# Windows / PowerShell
+pwsh ./scripts/update-local.ps1
+```
+
+```bash
+# macOS / Linux
+./scripts/update-local.sh
+```
+
+---
+
+## Aggiungere una nuova skill
+
+1. Copia `plugins/core/skills/skill-template/` in `plugins/core/skills/<nome-skill>/`.
+2. Aggiorna il frontmatter (`name`, `description`) e scrivi le istruzioni.
+3. Rimuovi `disable-model-invocation: true` se vuoi l'auto-invocazione.
+4. Commit + push.
+5. Su ogni account: `marketplace update` + reinstalla (vedi sopra).
+
+Per separare le skill in **più plugin** (es. `client-x`, `dev`, `writing`),
+crea altre cartelle sotto `plugins/` con la loro `.claude-plugin/plugin.json` e
+aggiungile all'array `plugins` in `.claude-plugin/marketplace.json`.
+
+---
+
+## Pubblicazione iniziale su GitHub
+
+```bash
+git init
+git add .
+git commit -m "Initial commit: marketplace personale di SKILL"
+# crea il repo remoto (richiede gh autenticato):
+"/c/Program Files/GitHub CLI/gh.exe" repo create enricopezzini-marketplace --private --source=. --push
+```

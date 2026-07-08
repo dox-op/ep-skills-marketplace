@@ -1,38 +1,22 @@
 {
-  "name": "mattpocock-skills",
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "enricopezzini",
+  "description": "Marketplace personale di SKILL di Enrico Pezzini, trasversale a tutti gli account Claude (personale, aziendale, cliente).",
   "owner": {
-    "name": "Gellify (fork of mattpocock/skills)",
-    "email": "enrico.pezzini@gellify.com"
+    "name": "Enrico Pezzini",
+    "email": "itenricopezzini@gmail.com"
   },
-  "description": "Engineering and productivity skills for real engineers — grilling sessions, TDD, architecture review, issue triage, and more. Forked from mattpocock/skills to add marketplace install support pending upstream issue #21.",
   "plugins": [
     {
-      "name": "mattpocock-engineering",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/mattpocock/skills.git",
-        "path": "skills",
-        "ref": "main"
+      "name": "core",
+      "source": "./plugins/core",
+      "description": "Set di SKILL personali sempre disponibili su qualsiasi account Claude.",
+      "author": {
+        "name": "Enrico Pezzini",
+        "email": "itenricopezzini@gmail.com"
       },
-      "description": "Engineering skills: diagnose, grill-with-docs, triage, improve-codebase-architecture, setup-matt-pocock-skills, tdd, to-issues, to-prd, zoom-out, prototype.",
-      "category": "engineering",
-      "author": { "name": "Matt Pocock" },
-      "strict": false,
-      "skills": ["./engineering"]
-    },
-    {
-      "name": "mattpocock-productivity",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/mattpocock/skills.git",
-        "path": "skills",
-        "ref": "main"
-      },
-      "description": "Productivity skills: caveman, grill-me, write-a-skill.",
-      "category": "productivity",
-      "author": { "name": "Matt Pocock" },
-      "strict": false,
-      "skills": ["./productivity"]
+      "keywords": ["skills", "personal", "cross-account"],
+      "license": "MIT"
     }
   ]
 }

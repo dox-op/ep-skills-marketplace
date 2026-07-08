@@ -84,6 +84,22 @@ claude plugin marketplace update enricopezzini   # riallinea il manifest
 claude plugin install core@enricopezzini          # reinstalla l'ultima versione
 ```
 
+### Script pronto (pull + update + reinstall)
+
+In alternativa c'è uno script che fa tutto in un colpo — `git pull`, riallineamento
+del manifest e reinstallazione del plugin. Usa il path del repo dove si trova, quindi
+funziona da qualsiasi account:
+
+```powershell
+# Windows / PowerShell
+pwsh ./scripts/update-local.ps1
+```
+
+```bash
+# macOS / Linux
+./scripts/update-local.sh
+```
+
 ---
 
 ## Aggiungere una nuova skill

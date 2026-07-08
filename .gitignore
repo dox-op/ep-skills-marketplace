@@ -9,3 +9,6 @@ Thumbs.db
 
 # Claude local state (non versionare lo stato locale del plugin manager)
 .claude/settings.local.json
+
+# Stato locale di Claude finito nel repo per artefatti d'ambiente (HOME/cache)
+plugin/

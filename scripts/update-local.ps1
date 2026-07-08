@@ -31,12 +31,15 @@ try {
     git pull --ff-only
     if ($LASTEXITCODE -ne 0) { throw "git pull fallito (exit $LASTEXITCODE)" }
 
+    # NB: i comandi `claude` vengono eseguiti con stdin chiuso (`$null | ...`).
+    # Senza, la CLI resta in attesa di input interattivo e fallisce con un
+    # fuorviante "Not logged in · Please run /login".
     Write-Host "==> claude plugin marketplace update $Marketplace..." -ForegroundColor Cyan
-    claude plugin marketplace update $Marketplace
+    $null | claude plugin marketplace update $Marketplace
     if ($LASTEXITCODE -ne 0) { throw "marketplace update fallito (exit $LASTEXITCODE)" }
 
     Write-Host "==> claude plugin install $Plugin@$Marketplace..." -ForegroundColor Cyan
-    claude plugin install "$Plugin@$Marketplace"
+    $null | claude plugin install "$Plugin@$Marketplace"
     if ($LASTEXITCODE -ne 0) { throw "plugin install fallito (exit $LASTEXITCODE)" }
 
     Write-Host "==> Fatto. Skill riallineate all'ultima versione." -ForegroundColor Green

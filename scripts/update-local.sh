@@ -19,10 +19,12 @@ cd "$REPO_ROOT"
 echo "==> git pull..."
 git pull --ff-only
 
+# NB: stdin chiuso (`< /dev/null`) sui comandi claude: senza, la CLI resta in
+# attesa di input interattivo e fallisce con un fuorviante "Not logged in".
 echo "==> claude plugin marketplace update $MARKETPLACE..."
-claude plugin marketplace update "$MARKETPLACE"
+claude plugin marketplace update "$MARKETPLACE" < /dev/null
 
 echo "==> claude plugin install $PLUGIN@$MARKETPLACE..."
-claude plugin install "$PLUGIN@$MARKETPLACE"
+claude plugin install "$PLUGIN@$MARKETPLACE" < /dev/null
 
 echo "==> Fatto. Skill riallineate all'ultima versione."

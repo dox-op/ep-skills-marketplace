@@ -15,7 +15,26 @@
         "name": "Enrico Pezzini",
         "email": "itenricopezzini@gmail.com"
       },
-      "keywords": ["skills", "personal", "cross-account"],
+      "keywords": [
+        "skills",
+        "personal",
+        "cross-account"
+      ],
+      "license": "MIT"
+    },
+    {
+      "name": "pstack",
+      "source": "./plugins/pstack",
+      "description": "Skill pstack (Lauren Tan, MIT) adattate a qualsiasi runtime di agent.",
+      "author": {
+        "name": "Enrico Pezzini",
+        "email": "itenricopezzini@gmail.com"
+      },
+      "keywords": [
+        "pstack",
+        "review",
+        "verification"
+      ],
       "license": "MIT"
     }
   ]

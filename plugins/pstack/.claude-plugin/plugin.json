@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "pstack",
+  "displayName": "pstack (adattato)",
+  "description": "Skill pstack di Lauren Tan (cursor/plugins, MIT) adattate a qualsiasi runtime di agent: review avversaria, verifica, principi di ingegneria.",
+  "author": { "name": "Lauren Tan" },
+  "homepage": "https://github.com/cursor/plugins/tree/main/pstack",
+  "repository": "https://github.com/cursor/plugins",
+  "license": "MIT",
+  "keywords": ["pstack", "review", "verification", "principles"]
+}

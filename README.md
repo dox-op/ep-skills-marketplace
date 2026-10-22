@@ -125,3 +125,18 @@ git commit -m "Initial commit: marketplace personale di SKILL"
 # crea il repo remoto (richiede gh autenticato):
 "/c/Program Files/GitHub CLI/gh.exe" repo create enricopezzini-marketplace --private --source=. --push
 ```
+
+---
+
+## Plugin `pstack`
+
+57 skill di [pstack](https://github.com/cursor/plugins/tree/main/pstack) (Lauren Tan, MIT),
+riscritte per non dipendere da Cursor o Claude Code. Plugin separato da `core`: si invocano
+come `/pstack:<skill>` (es. `/pstack:interrogate`, `/pstack:blast-radius`).
+
+```bash
+claude plugin install pstack@enricopezzini
+```
+
+I modelli per ruolo si configurano una volta con `/pstack:setup-pstack` (sezione `pstack models`
+nelle istruzioni dell'agent). Dettagli e adattamenti in `plugins/pstack/NOTICE.md`.

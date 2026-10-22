@@ -24,15 +24,17 @@ Before spawning reviewers, state the intent in one clear paragraph from the user
 
 ## Step 3, Spawn Reviewers
 
-Launch all reviewers in a single message with the Agent tool, one per row of the table below, labeled Reviewer A, B, and so on. Each reviewer is read-only: tell it in the prompt to inspect and report only, never edit files, run write commands, or push.
+Launch all reviewers in parallel, in a single step, using whatever mechanism your agent runtime offers for spawning independent subagents or sessions. Label them Reviewer A, B, and so on. Each reviewer is read-only: tell it in the prompt to inspect and report only, never edit files, run write commands, or push.
 
-| Subagent | Default model |
-|----------|---------------|
-| Reviewer A | `opus` |
-| Reviewer B | `sonnet` |
-| Reviewer C (optional, large or risky diffs) | `fable` |
+Assign each reviewer a different model, chosen from the models your runtime makes available. Model diversity is the whole point: never run every reviewer on the same model, and prefer different model families when possible.
 
-Pass each row's value as the Agent `model` override, with `subagent_type: general-purpose`. Model diversity is the whole point: never run every reviewer on the same model. If the Agent tool rejects an entry, fall back to the closest available model and say so in the output. Do not block the review on it.
+| Reviewer | Model tier |
+|----------|------------|
+| A | strongest available model |
+| B | a different model, from another family if possible |
+| C (optional, large or risky diffs) | a third distinct model |
+
+If the user or the project names the reviewer models (in a rule, config file, or message), use those. If a chosen model is rejected, fall back to the closest available one and say so in the output. If the runtime cannot spawn subagents or select models at all, run the reviewers sequentially in the current session, one fresh pass per reviewer with the same prompt, and state in the output that model diversity was not achieved. Do not block the review on any of this.
 
 Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`. Pick each subagent's reasoning effort for the size of the diff.
 

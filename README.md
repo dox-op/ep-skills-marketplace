@@ -156,3 +156,18 @@ claude plugin install mattpocock@enricopezzini
 
 Prima configurazione consigliata con `/mattpocock:setup-matt-pocock-skills`.
 Provenienza e dettagli in `plugins/mattpocock/NOTICE.md`.
+
+---
+
+## Plugin `caveman`
+
+22 skill di [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) (Julius Brussee, Apache-2.0),
+copiate verbatim: output compresso, commit/review concisi, esplorazione e refactor mirati.
+Plugin separato: si invocano come `/caveman:<skill>` (es. `/caveman:caveman`,
+`/caveman:caveman-commit`, `/caveman:caveman-review`).
+
+```bash
+claude plugin install caveman@enricopezzini
+```
+
+Provenienza e dettagli in `plugins/caveman/NOTICE.md`.

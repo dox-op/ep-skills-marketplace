@@ -53,6 +53,21 @@
         "domain-modeling"
       ],
       "license": "MIT"
+    },
+    {
+      "name": "caveman",
+      "source": "./plugins/caveman",
+      "description": "22 skill di Julius Brussee (JuliusBrussee/caveman, Apache-2.0): output compresso, commit/review concisi, esplorazione e refactor mirati.",
+      "author": {
+        "name": "Julius Brussee",
+        "url": "https://github.com/JuliusBrussee"
+      },
+      "keywords": [
+        "caveman",
+        "compression",
+        "review"
+      ],
+      "license": "Apache-2.0"
     }
   ]
 }

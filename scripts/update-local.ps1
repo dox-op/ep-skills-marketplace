@@ -5,7 +5,7 @@
 .DESCRIPTION
     1. Fa `git pull` nel repo del marketplace (per prendere le skill nuove/aggiornate).
     2. Riallinea il manifest del marketplace nel plugin manager di Claude.
-    3. Reinstalla il plugin `core` all'ultima versione (versioning via SHA git).
+    3. Reinstalla il plugin indicato (default llm-council) all'ultima versione (versioning via SHA git).
 
     Eseguibile da qualsiasi account: usa il path del repo dove si trova lo script,
     non un path hard-coded.
@@ -16,7 +16,7 @@
 [CmdletBinding()]
 param(
     [string]$Marketplace = "enricopezzini",
-    [string]$Plugin      = "core"
+    [string]$Plugin      = "llm-council"
 )
 
 $ErrorActionPreference = "Stop"

@@ -17,21 +17,23 @@ enricopezzini-marketplace/
 ├── .claude-plugin/
 │   └── marketplace.json          # manifest del marketplace (nome: "enricopezzini")
 ├── plugins/
-│   └── core/                     # plugin che impacchetta tutte le skill
-│       ├── .claude-plugin/
-│       │   └── plugin.json        # manifest del plugin (nome: "core")
-│       └── skills/
-│           └── skill-template/    # template da copiare per nuove skill
-│               └── SKILL.md
+│   ├── llm-council/              # una skill personale = un plugin, col suo nome
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json        # manifest del plugin (nome: "llm-council")
+│   │   └── skills/llm-council/SKILL.md
+│   └── skill-template/            # template da copiare per nuove skill/plugin
+│       ├── .claude-plugin/plugin.json
+│       └── skills/skill-template/SKILL.md
 └── README.md
 ```
 
 - Le skill installate sono **namespaced** dal nome del plugin: si invocano come
-  `/core:nome-skill`.
-- Il plugin `core` **non fissa** un `version` nel `plugin.json`: così ogni commit
+  `/<plugin>:<skill>` (es. `/llm-council:llm-council`). Non esiste un plugin
+  generico `core`: un prefisso deve dire a che cosa appartiene la skill.
+- I plugin **non fissano** un `version` nel `plugin.json`: così ogni commit
   diventa automaticamente una nuova versione (versioning via SHA git). Comodo per
   un set personale che evolve spesso. Se preferisci versioni esplicite, aggiungi
-  `"version": "1.0.0"` in `plugins/core/.claude-plugin/plugin.json` e **ricordati
+  `"version": "1.0.0"` in `plugins/<plugin>/.claude-plugin/plugin.json` e **ricordati
   di incrementarla a ogni release** (altrimenti gli account vedono "già aggiornato").
 
 ---
@@ -46,15 +48,15 @@ claude plugin marketplace add itenricopezzini/enricopezzini-marketplace
 #    oppure da URL git completo:
 #    claude plugin marketplace add https://github.com/itenricopezzini/enricopezzini-marketplace.git
 
-# 2. Installa il plugin con tutte le skill
-claude plugin install core@enricopezzini
+# 2. Installa i plugin che ti servono
+claude plugin install llm-council@enricopezzini
 ```
 
 Oppure dall'interno di una sessione Claude Code interattiva:
 
 ```
 /plugin marketplace add itenricopezzini/enricopezzini-marketplace
-/plugin install core@enricopezzini
+/plugin install llm-council@enricopezzini
 ```
 
 > Le skill **non** vengono copiate in `~/.claude`: restano gestite dal plugin
@@ -66,10 +68,10 @@ Per provare prima di pubblicare, puoi aggiungere il marketplace da path locale:
 
 ```bash
 claude plugin marketplace add "C:/Users/Enrico.Pezzini/projectz/skills/enricopezzini-marketplace"
-claude plugin install core@enricopezzini
+claude plugin install llm-council@enricopezzini
 ```
 
-> Nota: le `source` con path relativo (`./plugins/core`) funzionano sia da path
+> Nota: le `source` con path relativo (`./plugins/llm-council`) funzionano sia da path
 > locale sia quando il marketplace è aggiunto via git. Non funzionano invece se
 > punti direttamente a un URL del solo `marketplace.json`.
 
@@ -81,7 +83,7 @@ Dopo aver fatto push di nuove modifiche al repo:
 
 ```bash
 claude plugin marketplace update enricopezzini   # riallinea il manifest
-claude plugin install core@enricopezzini          # reinstalla l'ultima versione
+claude plugin update llm-council@enricopezzini    # aggiorna un plugin installato
 ```
 
 ### Script pronto (pull + update + reinstall)
@@ -104,15 +106,17 @@ pwsh ./scripts/update-local.ps1
 
 ## Aggiungere una nuova skill
 
-1. Copia `plugins/core/skills/skill-template/` in `plugins/core/skills/<nome-skill>/`.
-2. Aggiorna il frontmatter (`name`, `description`) e scrivi le istruzioni.
-3. Rimuovi `disable-model-invocation: true` se vuoi l'auto-invocazione.
-4. Commit + push.
-5. Su ogni account: `marketplace update` + reinstalla (vedi sopra).
+1. Copia `plugins/skill-template/` in `plugins/<nome-skill>/` (il plugin prende il nome della skill:
+   così il prefisso resta sensato, `/<nome-skill>:<nome-skill>`), rinomina `skills/skill-template/`
+   in `skills/<nome-skill>/` e aggiorna `name` in `.claude-plugin/plugin.json`.
+2. Aggiungi il plugin all'array `plugins` in `.claude-plugin/marketplace.json`.
+3. Aggiorna il frontmatter (`name`, `description`) e scrivi le istruzioni.
+4. Rimuovi `disable-model-invocation: true` se vuoi l'auto-invocazione.
+5. Commit + push.
+6. Su ogni account: `marketplace update` + reinstalla (vedi sopra).
 
-Per separare le skill in **più plugin** (es. `client-x`, `dev`, `writing`),
-crea altre cartelle sotto `plugins/` con la loro `.claude-plugin/plugin.json` e
-aggiungile all'array `plugins` in `.claude-plugin/marketplace.json`.
+Più skill affini possono stare nello stesso plugin (es. `client-x`, `dev`, `writing`): il nome
+del plugin deve però descrivere l'insieme, mai essere un contenitore generico.
 
 ---
 
@@ -131,7 +135,7 @@ git commit -m "Initial commit: marketplace personale di SKILL"
 ## Plugin `pstack`
 
 57 skill di [pstack](https://github.com/cursor/plugins/tree/main/pstack) (Lauren Tan, MIT),
-riscritte per non dipendere da Cursor o Claude Code. Plugin separato da `core`: si invocano
+riscritte per non dipendere da Cursor o Claude Code. Plugin separato: si invocano
 come `/pstack:<skill>` (es. `/pstack:interrogate`, `/pstack:blast-radius`).
 
 ```bash

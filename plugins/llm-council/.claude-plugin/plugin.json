@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "llm-council",
+  "displayName": "Enrico Pezzini — LLM Council",
+  "description": "Consiglio di 5 advisor AI che analizzano una decisione, si valutano a vicenda in modo anonimo e producono un verdetto. Si invoca come /llm-council:llm-council.",
+  "author": {
+    "name": "Enrico Pezzini",
+    "email": "itenricopezzini@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "council",
+    "decision",
+    "review"
+  ]
+}

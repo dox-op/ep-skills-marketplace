@@ -8,17 +8,31 @@
   },
   "plugins": [
     {
-      "name": "core",
-      "source": "./plugins/core",
-      "description": "Set di SKILL personali sempre disponibili su qualsiasi account Claude.",
+      "name": "llm-council",
+      "source": "./plugins/llm-council",
+      "description": "Consiglio di 5 advisor AI che analizzano una decisione, si valutano a vicenda in modo anonimo e producono un verdetto. Si invoca come /llm-council:llm-council.",
       "author": {
         "name": "Enrico Pezzini",
         "email": "itenricopezzini@gmail.com"
       },
       "keywords": [
-        "skills",
-        "personal",
-        "cross-account"
+        "council",
+        "decision",
+        "review"
+      ],
+      "license": "MIT"
+    },
+    {
+      "name": "skill-template",
+      "source": "./plugins/skill-template",
+      "description": "Template di partenza per una nuova skill. Si invoca come /skill-template:skill-template.",
+      "author": {
+        "name": "Enrico Pezzini",
+        "email": "itenricopezzini@gmail.com"
+      },
+      "keywords": [
+        "template",
+        "skills"
       ],
       "license": "MIT"
     },

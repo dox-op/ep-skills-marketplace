@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "skill-template",
+  "displayName": "Enrico Pezzini — Skill Template",
+  "description": "Template di partenza per una nuova skill. Si invoca come /skill-template:skill-template.",
+  "author": {
+    "name": "Enrico Pezzini",
+    "email": "itenricopezzini@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "template",
+    "skills"
+  ]
+}

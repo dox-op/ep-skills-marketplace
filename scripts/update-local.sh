@@ -2,13 +2,13 @@
 # Riallinea il marketplace enricopezzini in locale.
 #   1. git pull nel repo del marketplace
 #   2. riallinea il manifest nel plugin manager di Claude
-#   3. reinstalla il plugin `core` all'ultima versione (versioning via SHA git)
+#   3. reinstalla il plugin `$PLUGIN` all'ultima versione (versioning via SHA git)
 #
 # Uso: ./scripts/update-local.sh
 set -euo pipefail
 
 MARKETPLACE="${1:-enricopezzini}"
-PLUGIN="${2:-core}"
+PLUGIN="${2:-llm-council}"
 
 # Root del repo = cartella padre di /scripts
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

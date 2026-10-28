@@ -140,3 +140,19 @@ claude plugin install pstack@enricopezzini
 
 I modelli per ruolo si configurano una volta con `/pstack:setup-pstack` (sezione `pstack models`
 nelle istruzioni dell'agent). Dettagli e adattamenti in `plugins/pstack/NOTICE.md`.
+
+---
+
+## Plugin `mattpocock`
+
+27 skill di [mattpocock/skills](https://github.com/mattpocock/skills) (Matt Pocock, MIT),
+copiate verbatim: grilling, spec/ticket flow, TDD, code review, domain modelling e altro.
+Plugin separato: si invocano come `/mattpocock:<skill>` (es. `/mattpocock:tdd`,
+`/mattpocock:grill-with-docs`, `/mattpocock:code-review`).
+
+```bash
+claude plugin install mattpocock@enricopezzini
+```
+
+Prima configurazione consigliata con `/mattpocock:setup-matt-pocock-skills`.
+Provenienza e dettagli in `plugins/mattpocock/NOTICE.md`.

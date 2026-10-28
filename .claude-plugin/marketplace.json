@@ -36,6 +36,23 @@
         "verification"
       ],
       "license": "MIT"
+    },
+    {
+      "name": "mattpocock",
+      "source": "./plugins/mattpocock",
+      "description": "27 skill di Matt Pocock (mattpocock/skills, MIT): grilling, spec/ticket flow, TDD, code review, domain modelling.",
+      "author": {
+        "name": "Matt Pocock",
+        "url": "https://www.aihero.dev"
+      },
+      "keywords": [
+        "engineering",
+        "tdd",
+        "code-review",
+        "grilling",
+        "domain-modeling"
+      ],
+      "license": "MIT"
     }
   ]
 }

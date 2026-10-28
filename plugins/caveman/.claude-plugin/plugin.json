@@ -23,6 +23,7 @@
     "./skills/caveman-review",
     "./skills/caveman-setup",
     "./skills/caveman-stats",
+    "./skills/core-caveman",
     "./skills/investigate-first",
     "./skills/lean-build",
     "./skills/megacave",

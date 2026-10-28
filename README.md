@@ -145,7 +145,7 @@ nelle istruzioni dell'agent). Dettagli e adattamenti in `plugins/pstack/NOTICE.m
 
 ## Prefisso dei plugin
 
-Ogni skill si invoca con il prefisso del suo plugin (`/pstack:tdd`, `/mattpocock:tdd`, `/core:caveman`,
+Ogni skill si invoca con il prefisso del suo plugin (`/pstack:tdd`, `/mattpocock:tdd`, `/caveman:core-caveman`,
 `/caveman:caveman`): lo stesso nome in plugin diversi non collide. Le skill vanno quindi installate come
 plugin (`claude plugin install <plugin>@enricopezzini`), non copiate in cartelle flat come
 `.claude/skills/`, dove il prefisso si perde. `scripts/check-duplicates.sh` verifica che dentro un

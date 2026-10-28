@@ -21,3 +21,9 @@ Upstream `skills/generated/`, `skills/native/` and the build tooling in `skills/
 
 None to the skill contents. Only packaging: the skills are placed under a `caveman`
 plugin so they install namespaced as `/caveman:<skill>` from the `enricopezzini` marketplace.
+
+## Local addition (not from upstream)
+
+`skills/core-caveman/` is **not** part of `JuliusBrussee/caveman`: it is a personal variant of the
+caveman skill (intensity levels `lite|full|ultra|wenyan-*`), kept here so it installs as
+`/caveman:core-caveman`. The 22 upstream skills above remain verbatim.

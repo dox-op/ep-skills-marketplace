@@ -50,18 +50,19 @@ Una volta pubblicato il repo su git (vedi sotto), su **ogni** account:
 
 ```bash
 # 1. Aggiungi il marketplace (una volta per account)
-claude plugin marketplace add itenricopezzini/enricopezzini-marketplace
+claude plugin marketplace add dox-op/ep-skills-marketplace
 #    oppure da URL git completo:
-#    claude plugin marketplace add https://github.com/itenricopezzini/enricopezzini-marketplace.git
+#    claude plugin marketplace add https://github.com/dox-op/ep-skills-marketplace.git
 
 # 2. Installa i plugin che ti servono
 claude plugin install llm-council@enricopezzini
+claude plugin install pstack@enricopezzini     # idem mattpocock, caveman
 ```
 
 Oppure dall'interno di una sessione Claude Code interattiva:
 
 ```
-/plugin marketplace add itenricopezzini/enricopezzini-marketplace
+/plugin marketplace add dox-op/ep-skills-marketplace
 /plugin install llm-council@enricopezzini
 ```
 
@@ -75,6 +76,7 @@ Per provare prima di pubblicare, puoi aggiungere il marketplace da path locale:
 ```bash
 claude plugin marketplace add "C:/Users/Enrico.Pezzini/projectz/skills/enricopezzini-marketplace"
 claude plugin install llm-council@enricopezzini
+claude plugin install pstack@enricopezzini     # idem mattpocock, caveman
 ```
 
 > Nota: le `source` con path relativo (`./plugins/llm-council`) funzionano sia da path
@@ -133,7 +135,7 @@ git init
 git add .
 git commit -m "Initial commit: marketplace personale di SKILL"
 # crea il repo remoto (richiede gh autenticato):
-"/c/Program Files/GitHub CLI/gh.exe" repo create enricopezzini-marketplace --private --source=. --push
+"/c/Program Files/GitHub CLI/gh.exe" repo create ep-skills-marketplace --private --source=. --push
 ```
 
 ---

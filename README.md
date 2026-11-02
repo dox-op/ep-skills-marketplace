@@ -21,9 +21,15 @@ enricopezzini-marketplace/
 │   │   ├── .claude-plugin/
 │   │   │   └── plugin.json        # manifest del plugin (nome: "llm-council")
 │   │   └── skills/llm-council/SKILL.md
-│   └── skill-template/            # template da copiare per nuove skill/plugin
-│       ├── .claude-plugin/plugin.json
-│       └── skills/skill-template/SKILL.md
+│   ├── skill-template/            # template da copiare per nuove skill/plugin
+│   │   ├── .claude-plugin/plugin.json
+│   │   └── skills/skill-template/SKILL.md
+│   ├── pstack/                    # 57 skill di terzi (vedi sotto)
+│   ├── mattpocock/                # 27 skill di terzi
+│   └── caveman/                   # 23 skill (22 di terzi + core-caveman personale)
+├── scripts/
+│   ├── update-local.ps1|.sh       # pull + update + reinstall
+│   └── check-duplicates.sh        # nomi di skill duplicati dentro un plugin
 └── README.md
 ```
 
@@ -176,9 +182,9 @@ Provenienza e dettagli in `plugins/mattpocock/NOTICE.md`.
 ## Plugin `caveman`
 
 22 skill di [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) (Julius Brussee, Apache-2.0),
-copiate verbatim: output compresso, commit/review concisi, esplorazione e refactor mirati.
+copiate verbatim, più la skill personale `core-caveman`: output compresso, commit/review concisi, esplorazione e refactor mirati.
 Plugin separato: si invocano come `/caveman:<skill>` (es. `/caveman:caveman`,
-`/caveman:caveman-commit`, `/caveman:caveman-review`).
+`/caveman:caveman-commit`, `/caveman:caveman-review`, `/caveman:core-caveman`).
 
 ```bash
 claude plugin install caveman@enricopezzini
